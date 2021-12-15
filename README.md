@@ -45,7 +45,7 @@ xdummy|:heavy_check_mark:|
 xdummyA|:x:|Common denominator `xdummy`
 z|:heavy_check_mark:|
 zdummyA|:x:|Common denominator `z`
-zdummyA|:x:|Common denominator `z`
+zdummyB|:x:|Common denominator `z`
 
 Your console output should look a little bit like this (depending on the mechanism/command/editor used for changing files) if you go through the directories in alphabetical order:
 
