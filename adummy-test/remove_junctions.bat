@@ -1,0 +1,12 @@
+rmdir junctions\a-dummy
+rmdir junctions\a-dummy2
+rmdir junctions\a-dummy3
+rmdir junctions\adummy
+rmdir junctions\adummy2
+rmdir junctions\aZZZdummy
+rmdir junctions\aZZZdummy2
+rmdir junctions\xdummy
+rmdir junctions\xdummyA
+rmdir junctions\z
+rmdir junctions\zdummyA
+rmdir junctions\zdummyB

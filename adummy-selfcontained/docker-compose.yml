@@ -1,0 +1,38 @@
+version: '3'
+services:
+  inotify-monitor:
+    # CMD in Dockerfile starts inotifywait -r -m /mnt
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .\junctions:/mnt/junctions
+      # - type: bind
+      #   source: .\junctions
+      #   target: /mnt/junctions
+
+  # # additional alternative
+  # # if you're using a docker version w/o inotify support
+  # # your docker version might not be affected at all
+  # tail-file-monitor:
+  #   image: busybox
+  #   command: [
+  #     "tail", "-F",
+  #     "/mnt/junctions/a-dummy/file.txt",
+  #     "/mnt/junctions/a-dummy2/file.txt",
+  #     "/mnt/junctions/a-dummy3/file.txt",
+  #     "/mnt/junctions/adummy/file.txt",
+  #     "/mnt/junctions/adummy2/file.txt",
+  #     "/mnt/junctions/aZZZdummy/file.txt",
+  #     "/mnt/junctions/aZZZdummy2/file.txt",
+  #     "/mnt/junctions/xdummy/file.txt",
+  #     "/mnt/junctions/xdummyA/file.txt",
+  #     "/mnt/junctions/z/file.txt",
+  #     "/mnt/junctions/zdummyA/file.txt",
+  #     "/mnt/junctions/zdummyB/file.txt",
+  #   ]
+  #   volumes:
+  #     - .\.:/mnt/junctions
+  #     # - type: bind
+  #     #   source: .\junctions
+  #     #   target: /mnt/junctions

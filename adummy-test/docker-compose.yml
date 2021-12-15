@@ -1,0 +1,38 @@
+version: '3'
+services:
+  inotify-monitor:
+    # CMD in Dockerfile starts inotifywait -r -m /mnt
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .\.:/mnt/self
+      # - type: bind
+      #   source: .\.
+      #   target: /mnt/self
+
+  # additional alternative
+  # if you're using a docker version
+  # that is not affected, but there might be no inotify/inode events at all
+  # tail-file-monitor:
+  #   image: busybox
+  #   command: [
+  #     "tail", "-F",
+  #     "/mnt/self/junctions/a-dummy/file.txt",
+  #     "/mnt/self/junctions/a-dummy2/file.txt",
+  #     "/mnt/self/junctions/a-dummy3/file.txt",
+  #     "/mnt/self/junctions/adummy/file.txt",
+  #     "/mnt/self/junctions/adummy2/file.txt",
+  #     "/mnt/self/junctions/aZZZdummy/file.txt",
+  #     "/mnt/self/junctions/aZZZdummy2/file.txt",
+  #     "/mnt/self/junctions/xdummy/file.txt",
+  #     "/mnt/self/junctions/xdummyA/file.txt",
+  #     "/mnt/self/junctions/z/file.txt",
+  #     "/mnt/self/junctions/zdummyA/file.txt",
+  #     "/mnt/self/junctions/zdummyB/file.txt",
+  #   ]
+  #   volumes:
+  #     - .\.:/mnt/self
+  #     # - type: bind
+  #     #   source: .\.
+  #     #   target: /mnt/self
