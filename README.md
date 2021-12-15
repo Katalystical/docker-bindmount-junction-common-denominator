@@ -85,6 +85,12 @@ These Docker-internal commands/code components are undocumented and might be clo
 - `adummy-targetdirs` (dir) contains to-be-junctioned directories
 - `adummy-test` (dir) is a docker-compose project root
 - `adummy-test\Dockerfile` is a custom Dockerfile providing inotifywait which recursively watches fs events inside the container
-- `adummy-selfcontained` is a variant (same data and containers, slightly different bind mounts) w/o junctioning directories outside the project root (regular)
+- `adummy-test\docker-compose.yml` giving a minimal env that bind-mounts the directory
+- `adummy-test\create_junctions.bat` creates junctions for each directory in adummy-targetdirs respectively, e.g.
+  - `adummy-test\junctions\a-dummy` -> `..\adummy-targetdirs\a-dummy`
+  - `adummy-test\junctions\a-dummy2` -> `..\adummy-targetdirs\a-dummy2`
+  and so on
+- `adummy-test\remove_junctions.bat` removes the created junctions by the previously mentioned bat file
+- `adummy-selfcontained` is a variant (same data and containers, slightly different bind mounts) w/o junctioning directories outside the project root (regular way with same results)
 
 A secondary container/service is available in the `docker-compose.yml` files, because `inotifywait` won't give you any results/events if your Docker version doesn't provide it. Therefore, I've provided a container that simply 'watches' using `tail -F` for every file.txt in every junctioned dir.
